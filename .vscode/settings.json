@@ -1,0 +1,108 @@
+{
+  "editor.fontFamily": "Cascadia Code, CaskaydiaCove Nerd Font Propo, JetBrainsMono NF, Cascadia Code, Consolas, Operator Mono, MonoLisa, VictorMono Nerd Font Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": "'calt', 'ss01'",
+  "editor.fontWeight": "400",
+  "editor.fontSize": 11,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.addMissingImports": "explicit"
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
+  // "editor.fontFamily": "'FiraCode Nerd Font', 'JetbrainsMono Nerd Font', 'Hack Nerd Font', 'monospace'",
+  // "editor.lineHeight": 1.5,
+  "editor.smoothScrolling": true,
+  // "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "workbench.iconTheme": "material-icon-theme",
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.arrowParens": "always",
+  "editor.autoClosingBrackets": "always",
+  "auto-close-tag.activationOnLanguage": [
+    "xml",
+    "php",
+    "blade",
+    "ejs",
+    "jinja",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "plaintext",
+    "markdown",
+    "vue",
+    "liquid",
+    "erb",
+    "lang-cfml",
+    "cfml",
+    "HTML (EEx)",
+    "HTML (Eex)",
+    "plist"
+  ],
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders",
+    "build",
+    "package.json",
+    "public",
+    "db.json",
+    ".gitignore",
+    "**/settings.json"
+  ],
+  "liveServer.settings.fullReload": true,
+  "javascript.autoClosingTags": true,
+  "html.autoClosingTags": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": ["dengan"],
+  "todo-tree.tree.showBadges": false,
+  "workbench.colorCustomizations": {
+    "activityBar.foreground": "#FFA99C",
+    "activityBar.background": "#0A0100",
+    "activityBar.inactiveForeground": "#901E3D",
+    "activityBarBadge.foreground": "#000000",
+    "activityBarBadge.background": "#C3AC32",
+    "statusBar.foreground": "#94FEF4",
+    "statusBar.background": "#117C71",
+    "statusBarItem.hoverBackground": "#1F5066",
+    "statusBarItem.remoteForeground": "#DDE9FF",
+    "statusBarItem.remoteBackground": "#355EA9",
+    "statusBar.debuggingForeground": "#000000",
+    "statusBar.debuggingBackground": "#47B2A8"
+  }
+}
