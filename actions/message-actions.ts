@@ -15,9 +15,9 @@ export async function createMessage(
 ): Promise<ActionResult<MessageDto>> {
   try {
     const userId = await getAuthUserId();
-    if (!userId) {
-      throw new Error('No User id found!');
-    }
+    // if (!userId) {
+    //   throw new Error('No User id found!');
+    // }
     const validated = messageSchema.safeParse(data);
     if (!validated.success)
       return { status: 'error', error: validated.error.errors };
@@ -55,9 +55,9 @@ export async function createMessage(
 export async function getMessageThread(recipientId: string) {
   try {
     const userId = await getAuthUserId();
-    if (!userId) {
-      throw new Error('No User id found!');
-    }
+    // if (!userId) {
+    //   throw new Error('No User id found!');
+    // }
 
     const messages = await db.message.findMany({
       where: {
@@ -227,6 +227,14 @@ export async function getUnreadMessageCount() {
         r.recipientDeleted === false &&
         r.recipientId === userId
     ).length;
+
+    // return db.message.count({
+    //   where: {
+    //     recipientId: userId,
+    //     dateRead: null,
+    //     recipientDeleted: false,
+    //   },
+    // });
   } catch (err) {
     console.error(err);
     throw err;

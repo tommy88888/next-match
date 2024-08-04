@@ -140,7 +140,7 @@ export async function getAuthUserId() {
   const session = await auth();
   const userId = session?.user?.id;
 
-  if (!userId) return null;
+  if (!userId) throw new Error('Unauthorized');
 
   return userId;
 }

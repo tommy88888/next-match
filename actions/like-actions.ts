@@ -4,14 +4,15 @@ import { auth } from '@/auth';
 import { db } from '@/lib/db';
 
 import { pusherServer } from '@/lib/pusher';
+import { getAuthUserId } from './auth-actions';
 
 export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
   try {
-    // const userId = await getAuthUserId();
-    const session = await auth();
-    const userId = session?.user?.id;
+    const userId = await getAuthUserId();
+    // const session = await auth();
+    // const userId = session?.user?.id;
 
-    if (!userId) throw new Error('Unauthorized');
+    // if (!userId) throw new Error('Unauthorized');
 
     if (isLiked) {
       await db.like.delete({
@@ -52,11 +53,11 @@ export async function toggleLikeMember(targetUserId: string, isLiked: boolean) {
 
 export async function fetchCurrentUserLikeIds() {
   try {
-    // const userId = await getAuthUserId();
-    const session = await auth();
-    const userId = session?.user?.id;
+    const userId = await getAuthUserId();
+    // const session = await auth();
+    // const userId = session?.user?.id;
 
-    if (!userId) throw new Error('Unauthorized');
+    // if (!userId) throw new Error('Unauthorized');
     const likeIds = await db.like.findMany({
       where: {
         sourceUserId: userId,
@@ -75,11 +76,11 @@ export async function fetchCurrentUserLikeIds() {
 
 export const fetchLikedMembers = async (type = 'source') => {
   try {
-    // const userId = await getAuthUserId();
-    const session = await auth();
-    const userId = session?.user?.id;
+    const userId = await getAuthUserId();
+    // const session = await auth();
+    // const userId = session?.user?.id;
 
-    if (!userId) throw new Error('Unauthorized');
+    // if (!userId) throw new Error('Unauthorized');
 
     switch (type) {
       case 'source':

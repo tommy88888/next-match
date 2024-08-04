@@ -114,13 +114,19 @@ const MessageList = ({
   currentUserId,
   chatId,
 }: MessageListProps) => {
+  const setReadCount = useRef(false);
   const [messages, setMessages] = useState(initialMessages.messages);
 
-  const updateUnreadCount = useMessageStore((state) => state.updateUnreadCount);
+  const { updateUnreadCount } = useMessageStore((state) => ({
+    updateUnreadCount: state.updateUnreadCount,
+  }));
   const channelRef = useRef<Channel | null>(null);
 
   useEffect(() => {
-    updateUnreadCount(-initialMessages.readCount);
+    if (!setReadCount.current) {
+      updateUnreadCount(-initialMessages.readCount);
+      setReadCount.current = true;
+    }
   }, [initialMessages.readCount, updateUnreadCount]);
 
   const handleNewMessage = useCallback((message: MessageDto) => {

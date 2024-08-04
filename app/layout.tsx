@@ -21,13 +21,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
-  // console.log('🚀 ~ session:', session);
   const userId = session?.user?.id || null;
 
   const profileComplete = session?.user.profileComplete as boolean;
 
   return (
-    // <SessionProvider session={session}>
     <html lang='en'>
       <body className={cn(inter.className)}>
         <Providers userId={userId} profileComplete={profileComplete}>
@@ -38,6 +36,5 @@ export default async function RootLayout({
         </Providers>
       </body>
     </html>
-    // </SessionProvider>
   );
 }

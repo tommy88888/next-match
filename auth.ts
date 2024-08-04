@@ -22,7 +22,6 @@ export const {
       return session;
     },
     async jwt({ user, token }) {
-      // console.log('🚀 ~ jwt ~ user:', user);
       if (user) {
         token.profileComplete = user.profileComplete;
         token.role = user.role;

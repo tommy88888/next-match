@@ -22,9 +22,6 @@ export async function updateMemberProfile(
     if (!validated.success)
       return { status: 'error', error: validated.error.errors };
     const userId = await getAuthUserId();
-    if (!userId) {
-      throw new Error('No user id found!');
-    }
 
     const { name, description, city, country } = validated.data;
 
@@ -52,70 +49,65 @@ export async function updateMemberProfile(
     return { status: 'error', error: err.message || 'Something went wrong' };
   }
 }
-export async function newMemberProfile(
-  data: MemberSchema
-  // nameUpdated: boolean
-): Promise<ActionResult<Member>> {
-  try {
-    const userId = await getAuthUserId();
+// export async function newMemberProfile(
+//   data: MemberSchema
+//   // nameUpdated: boolean
+// ): Promise<ActionResult<Member>> {
+//   try {
+//     const userId = await getAuthUserId();
 
-    const validated = memberSchema.safeParse(data);
+//     const validated = memberSchema.safeParse(data);
 
-    if (!validated.success)
-      return { status: 'error', error: validated.error.errors };
+//     if (!validated.success)
+//       return { status: 'error', error: validated.error.errors };
 
-    if (!userId) {
-      return {
-        status: 'error',
-        error: 'No user id found, please log in or register',
-      };
-    }
+//     if (!userId) {
+//       return {
+//         status: 'error',
+//         error: 'No user id found, please log in or register',
+//       };
+//     }
 
-    const { name, gender, dateOfBirth, description, city, country } =
-      validated.data;
+//     const { name, gender, dateOfBirth, description, city, country } =
+//       validated.data;
 
-    // if (nameUpdated) {
-    //   await db.user.update({
-    //     where: {
-    //       id: userId,
-    //     },
-    //     data: { name },
-    //   });
-    // }
+//     // if (nameUpdated) {
+//     //   await db.user.update({
+//     //     where: {
+//     //       id: userId,
+//     //     },
+//     //     data: { name },
+//     //   });
+//     // }
 
-    const existingMember = await db.member.findUnique({
-      where: { userId: userId },
-    });
+//     const existingMember = await db.member.findUnique({
+//       where: { userId: userId },
+//     });
 
-    if (existingMember) {
-      return {
-        status: 'error',
-        error: 'Member already exists for this user',
-      };
-    }
-
-    console.log('🚀 ~ validated.data:', validated.data);
-    const member = await db.member.create({
-      data: {
-        ...data,
-        user: {
-          connect: { id: userId }, // Connect to existing user by userId
-        },
-      },
-    });
-    return { status: 'success', data: member };
-  } catch (err: any) {
-    console.error(err);
-    return { status: 'error', error: err.message || 'Something went wrong' };
-  }
-}
+//     if (existingMember) {
+//       return {
+//         status: 'error',
+//         error: 'Member already exists for this user',
+//       };
+//     }
+//     const member = await db.member.create({
+//       data: {
+//         ...data,
+//         user: {
+//           connect: { id: userId }, // Connect to existing user by userId
+//         },
+//       },
+//     });
+//     return { status: 'success', data: member };
+//   } catch (err: any) {
+//     console.error(err);
+//     return { status: 'error', error: err.message || 'Something went wrong' };
+//   }
+// }
 
 export async function addImage(url: string, publicId: string) {
   try {
     const userId = await getAuthUserId();
-    if (!userId) {
-      throw new Error('No User id found!');
-    }
 
     return db.member.update({
       where: { userId },
@@ -136,9 +128,6 @@ export async function setMainImage(photo: Photo) {
     throw new Error('Only approved photos can be set to main image');
   try {
     const userId = await getAuthUserId();
-    if (!userId) {
-      throw new Error('No User id found!');
-    }
 
     await db.user.update({
       where: {
@@ -160,9 +149,9 @@ export async function setMainImage(photo: Photo) {
 export async function deleteImage(photo: Photo) {
   try {
     const userId = await getAuthUserId();
-    if (!userId) {
-      throw new Error('No User id found!');
-    }
+    // if (!userId) {
+    //   throw new Error('No User id found!');
+    // }
     if (photo.publicId) {
       await cloudinary.v2.uploader.destroy(photo.publicId);
     }
@@ -184,9 +173,7 @@ export async function deleteImage(photo: Photo) {
 export async function getUserInfoForNav() {
   try {
     const userId = await getAuthUserId();
-    if (!userId) {
-      throw new Error('No User id found!');
-    }
+
     return db.user.findUnique({
       where: { id: userId },
       select: { name: true, image: true },

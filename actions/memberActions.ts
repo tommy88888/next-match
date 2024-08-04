@@ -19,9 +19,9 @@ export async function getMembers({
   // if (!session?.user) return null;
 
   const userId = await getAuthUserId();
-  if (!userId) {
-    throw new Error('No User id found!');
-  }
+  // if (!userId) {
+  //   throw new Error('No User id found!');
+  // }
 
   // const ageRange = searchParams?.ageRange?.toString()?.split(',') || [18, 100];
   const [minAge, maxAge] = ageRange.split(',');
@@ -47,13 +47,13 @@ export async function getMembers({
   const skip = (page - 1) * limit;
 
   try {
-    const member = await db.member.findUnique({
-      where: { userId },
-    });
+    // const member = await db.member.findUnique({
+    //   where: { userId },
+    // });
 
-    if (!member) {
-      throw new Error('Member not found');
-    }
+    // if (!member) {
+    //   throw new Error('Member not found');
+    // }
 
     // let conditions = [
     //   { dateOfBirth: { gte: minDob } },
@@ -141,9 +141,9 @@ export async function getPhotosByUserId(userId: string) {
 
 export async function updateLastActive() {
   const userId = await getAuthUserId();
-  if (!userId) {
-    throw new Error('No User id found!');
-  }
+  // if (!userId) {
+  //   throw new Error('No User id found!');
+  // }
 
   try {
     const member = await db.member.findUnique({

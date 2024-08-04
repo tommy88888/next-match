@@ -16,13 +16,17 @@ export function formatShortDateTime(date: Date) {
   return format(date, 'dd MM yy h:mm:a');
 }
 
+// export function timeAgo(date: string) {
+//   const formatString = 'dd MM yy hh:mm:aa';
+
+//   const parsedDate = parse(date, formatString, new Date());
+
+//   if (isNaN(parsedDate.getTime())) console.error('invalid date string');
+//   return formatDistance(parsedDate, new Date()) + ' ago';
+// }
+
 export function timeAgo(date: string) {
-  const formatString = 'dd MM yy hh:mm:aa';
-
-  const parsedDate = parse(date, formatString, new Date());
-
-  if (isNaN(parsedDate.getTime())) console.error('invalid date string');
-  return formatDistance(parsedDate, new Date()) + ' ago';
+  return formatDistance(new Date(date), new Date()) + ' ago';
 }
 
 export function handleFormServerErrors<TFieldValues extends FieldValues>(
